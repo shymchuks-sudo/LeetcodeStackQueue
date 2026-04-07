@@ -12,22 +12,27 @@ class Queue:
         new_node = Node(data)
         if self.tail is None:
             self.head = self.tail = new_node
+
         else:
             self.tail.next = new_node
             self.tail = new_node
 
     def pop(self):
         if self.is_empty():
-            raise IndexError('pop from empty queue')
+            raise IndexError('empty queue')
+
         data = self.head.data
         self.head = self.head.next
+
         if self.head is None:
             self.tail = None
+
         return data
 
     def peek(self):
         if self.is_empty():
             raise IndexError('empty queue')
+
         return self.head.data
 
     def is_empty(self):
